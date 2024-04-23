@@ -30,5 +30,36 @@ public class TablaHash {
             Persona persona = new Persona(nombre, edad);
             int hash = calcularHash(nombre, slots);
             hashTable[hash].add(persona);
-        }
-        
+        }
+
+        System.out.println("Tabla:");
+        for (int i = 0; i < slots; i++) {
+            System.out.println("Bucket " + i + ":");
+            System.out.println(hashTable[i]);
+        }
+        dato.close();
+    }
+
+    private static int calcularHash(String nombre, int slots) {
+        int hash = 0;
+        for (int i = 0; i < nombre.length(); i++) {
+            hash += (int) nombre.charAt(i);
+        }
+        return hash % slots;
+    }
+
+    static class Persona {
+        private String nombre;
+        private int edad;
+
+        public Persona(String nombre, int edad) {
+            this.nombre = nombre;
+            this.edad = edad;
+        }
+
+        @Override
+        public String toString() {
+            return "(" + nombre + ", " + edad + ")";
+        }
+    }
+}
