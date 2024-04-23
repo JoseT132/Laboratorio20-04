@@ -38,4 +38,4 @@ public class ParentesisB {
 
         return pila.isEmpty(); // La pila debe estar vacía al final para que estén balanceados
     }
-}
+} 
